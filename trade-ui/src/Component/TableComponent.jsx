@@ -196,13 +196,13 @@ function TableComponent(props) {
         }
     }, [props.data, previousWSSData, setPreviousWSSData, setTableData, setRowColors, setNiftyData, setniftyValue, setniftyPercentChngeValue]);
 
-    const fetchData = useCallback(() => {
+    const fetchData = () => {
         if (props.data === PYTHON_API) {
             fetchDataFromPythonApi();
         } else if (props.data === RapidApi) {
             fetchDataFromRapidApi();
         }
-    });
+    };
     
     useEffect(() => {
         fetchData();
