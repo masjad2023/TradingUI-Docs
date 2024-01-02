@@ -50,6 +50,8 @@ function TableComponent(props) {
             "quantity": orderData.quantity,
             "orderType": orderData.orderType
         });
+
+        console.log(niftyRecord + " " + data);
     }
 
     function onQuantityChange(event) {
@@ -180,8 +182,8 @@ function TableComponent(props) {
                     });
                     setRowColors(newRowColors);
                 }
-                setPreviousWSSData(data);
-                setTableData(data);
+                // setPreviousWSSData(data);
+                // setTableData(data);
             };
 
             ws.onerror = (error) => {
@@ -205,7 +207,7 @@ function TableComponent(props) {
 
         fetchData();
 
-    }, [props.data]);
+    }, [props.data, fetchDataFromPythonApi, fetchDataFromRapidApi]);
 
     return (
         <div>
