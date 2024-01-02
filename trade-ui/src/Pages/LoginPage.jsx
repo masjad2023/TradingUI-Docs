@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import facebook from "../images/fb.png";
 import { GoogleLogin } from "@react-oauth/google";
 import FacebookButton from "../Component/FBLogin";
 
