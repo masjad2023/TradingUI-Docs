@@ -6,6 +6,7 @@ import React from 'react';
 //import { RapidApi, PYTHON_API, PYTHON_Socket } from "../constants";
 
 function TradeData() {
+    let niftyData = {};
     // const [key, setKey] = useState('home');
     // const [niftyData, setNiftyData] = useState({});
     // const [activeTabData, setActiveTabData] = useState(RapidApi);
