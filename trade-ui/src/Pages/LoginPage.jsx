@@ -97,7 +97,7 @@ function LoginPage(event) {
                       <FacebookButton onFacebookLogin={handleFacebookLogin} />
                     </div>
                     <div className="col-12">
-                      <p className="small mb-0">Don't have account? <a>Create an account</a></p>
+                      <p className="small mb-0">Don't have account? <span>Create an account</span></p>
                     </div>
 
                   </div>

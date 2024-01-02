@@ -194,7 +194,7 @@ function TableComponent(props) {
                 ws.close();
             };
         }
-    }, [props.data, setPreviousWSSData, setTableData, setRowColors, setNiftyData, setniftyValue, setniftyPercentChngeValue]);
+    }, [props.data, previousWSSData, setPreviousWSSData, setTableData, setRowColors, setNiftyData, setniftyValue, setniftyPercentChngeValue]);
 
     useEffect(() => {
         const fetchData = () => {
@@ -207,7 +207,7 @@ function TableComponent(props) {
 
         fetchData();
 
-    }, [props.data]);
+    }, [props.data, fetchDataFromPythonApi, fetchDataFromRapidApi]);
 
     return (
         <div>
@@ -240,7 +240,7 @@ function TableComponent(props) {
 
                         return (
                             <tr key={index}>
-                                <td scope="row" style={{ backgroundColor: rowColor }}>{rowData.symbol}</td>
+                                <td style={{ backgroundColor: rowColor }}>{rowData.symbol}</td>
                                 <td style={{ backgroundColor: rowColor }}>{rowData.identifier}</td>
                                 <td style={{ backgroundColor: rowColor,textAlign: 'right'}}>{formatNumber(rowData.open)}</td>
                                 <td style={{ backgroundColor: rowColor,textAlign: 'right'}}>{formatNumber(rowData.dayHigh)}</td>
@@ -255,8 +255,8 @@ function TableComponent(props) {
                                 <td style={{ backgroundColor: rowColor,textAlign: 'right'}}>{formatNumber(rowData.yearLow)}</td>
                                 <td style={{ backgroundColor: rowColor }}>{rowData.lastUpdateTime}</td>
                                 <td style={{ backgroundColor: rowColor }}>
-                                    <a onClick={() => handleShowBuySellPopUp(rowData, true)}>Buy</a>&nbsp;
-                                    <a onClick={() => handleShowBuySellPopUp(rowData, false)}>Sell</a>
+                                    <span onClick={() => handleShowBuySellPopUp(rowData, true)}>Buy</span>&nbsp;
+                                    <span onClick={() => handleShowBuySellPopUp(rowData, false)}>Sell</span>
                                 </td>
                             </tr>
                         );
