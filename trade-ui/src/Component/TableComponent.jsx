@@ -196,18 +196,17 @@ function TableComponent(props) {
         }
     }, [props.data, previousWSSData, setPreviousWSSData, setTableData, setRowColors, setNiftyData, setniftyValue, setniftyPercentChngeValue]);
 
+    const fetchData = () => {
+        if (props.data === PYTHON_API) {
+            fetchDataFromPythonApi();
+        } else if (props.data === RapidApi) {
+            fetchDataFromRapidApi();
+        }
+    };
+    
     useEffect(() => {
-        const fetchData = () => {
-            if (props.data === PYTHON_API) {
-                fetchDataFromPythonApi();
-            } else if (props.data === RapidApi) {
-                fetchDataFromRapidApi();
-            }
-        };
-
         fetchData();
-
-    }, [props.data, fetchDataFromPythonApi, fetchDataFromRapidApi]);
+    }, [props.data]);
 
     return (
         <div>
