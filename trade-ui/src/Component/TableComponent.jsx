@@ -153,61 +153,61 @@ function TableComponent(props) {
         return parseFloat(number).toFixed(2);
     };
 
-    // useEffect(() => {
-    //     if (props.data === PYTHON_Socket) {
-    //         const ws = new WebSocket(PythonSocketUrl);
-    //         console.log("WSS");
-    //         ws.onopen = () => {
-    //             console.log('WebSocket connection established.');
-    //         };
+    useEffect(() => {
+        if (props.data === PYTHON_Socket) {
+            const ws = new WebSocket(PythonSocketUrl);
+            console.log("WSS");
+            ws.onopen = () => {
+                console.log('WebSocket connection established.');
+            };
 
-    //         ws.onmessage = (event) => {
-    //             const newData = JSON.parse(event.data);
-    //             let data = newData.filter((data) => data.symbol !== 'NIFTY 50');
-    //             let nData = newData.filter((data) => data.symbol === 'NIFTY 50');
+            ws.onmessage = (event) => {
+                const newData = JSON.parse(event.data);
+                let data = newData.filter((data) => data.symbol !== 'NIFTY 50');
+                let nData = newData.filter((data) => data.symbol === 'NIFTY 50');
                 
-    //             setNiftyData(nData[0]);
-    //             setniftyValue(nData[0].lastPrice);
-    //             setniftyPercentChngeValue(nData[0].pChange);
-    //             if (JSON.stringify(data) !== JSON.stringify(previousWSSData)) {
-    //                 console.log("Web socket called....");
-    //                 const newRowColors = data.map((rowData) => {
-    //                     const oldData = previousWSSData.find((prevData) => prevData.symbol === rowData.symbol);
-    //                     const change = oldData && rowData.change - oldData.change;
+                setNiftyData(nData[0]);
+                setniftyValue(nData[0].lastPrice);
+                setniftyPercentChngeValue(nData[0].pChange);
+                if (JSON.stringify(data) !== JSON.stringify(previousWSSData)) {
+                    console.log("Web socket called....");
+                    const newRowColors = data.map((rowData) => {
+                        const oldData = previousWSSData.find((prevData) => prevData.symbol === rowData.symbol);
+                        const change = oldData && rowData.change - oldData.change;
 
-    //                     return {
-    //                         symbol: rowData.symbol,
-    //                         color: change > 0 ? 'greenyellow' : change < 0 ? 'aqua' : 'blue',
-    //                     };
-    //                 });
-    //                 setRowColors(newRowColors);
-    //             }
-    //             setPreviousWSSData(data);
-    //             setTableData(data);
-    //         };
+                        return {
+                            symbol: rowData.symbol,
+                            color: change > 0 ? 'greenyellow' : change < 0 ? 'aqua' : 'blue',
+                        };
+                    });
+                   setRowColors(newRowColors);
+                }
+                setPreviousWSSData(data);
+                setTableData(data);
+            };
 
-    //         ws.onerror = (error) => {
-    //             console.error('WebSocket error:', error);
-    //         };
+            ws.onerror = (error) => {
+                console.error('WebSocket error:', error);
+            };
 
-    //         return () => {
-    //             ws.close();
-    //         };
-    //     }
-    // }, [props.data, setPreviousWSSData, setTableData]);
+            return () => {
+                ws.close();
+            };
+        }
+    }, [props.data, setPreviousWSSData, setTableData, setRowColors, setNiftyDatayData, setniftyValue, setniftyPercentChngeValue]);
 
-    // useEffect(() => {
-    //     const fetchData = () => {
-    //         if (props.data === PYTHON_API) {
-    //             fetchDataFromPythonApi();
-    //         } else if (props.data === RapidApi) {
-    //             fetchDataFromRapidApi();
-    //         }
-    //     };
+    useEffect(() => {
+        const fetchData = () => {
+            if (props.data === PYTHON_API) {
+                fetchDataFromPythonApi();
+            } else if (props.data === RapidApi) {
+                fetchDataFromRapidApi();
+            }
+        };
 
-    //     fetchData();
+        fetchData();
 
-    // }, [props.data, fetchDataFromPythonApi, fetchDataFromRapidApi]);
+    }, [props.data]);
 
     return (
         <div>
@@ -255,8 +255,8 @@ function TableComponent(props) {
                                 <td style={{ backgroundColor: rowColor,textAlign: 'right'}}>{formatNumber(rowData.yearLow)}</td>
                                 <td style={{ backgroundColor: rowColor }}>{rowData.lastUpdateTime}</td>
                                 <td style={{ backgroundColor: rowColor }}>
-                                    <a href="#" onClick={() => handleShowBuySellPopUp(rowData, true)}>Buy</a>&nbsp;
-                                    <a href="#" onClick={() => handleShowBuySellPopUp(rowData, false)}>Sell</a>
+                                    <a onClick={() => handleShowBuySellPopUp(rowData, true)}>Buy</a>&nbsp;
+                                    <a onClick={() => handleShowBuySellPopUp(rowData, false)}>Sell</a>
                                 </td>
                             </tr>
                         );
