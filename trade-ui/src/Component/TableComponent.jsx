@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { RapidApi, PYTHON_API, PYTHON_Socket, PythonApiUrl, PythonSocketUrl, RapidApiUrl, BuySellApiUrl } from "../constants";
 import axios from "axios";
 import Modal from 'react-bootstrap/Modal';
@@ -196,17 +196,17 @@ function TableComponent(props) {
         }
     }, [props.data, previousWSSData, setPreviousWSSData, setTableData, setRowColors, setNiftyData, setniftyValue, setniftyPercentChngeValue]);
 
-    const fetchData = () => {
+    const fetchData = useCallback(() => {
         if (props.data === PYTHON_API) {
             fetchDataFromPythonApi();
         } else if (props.data === RapidApi) {
             fetchDataFromRapidApi();
         }
-    };
+    });
     
     useEffect(() => {
         fetchData();
-    }, [props.data]);
+    }, [props.data, fetchData]);
 
     return (
         <div>
