@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 // import Tab from 'react-bootstrap/Tab';
 // import Tabs from 'react-bootstrap/Tabs';
 
 // import TableComponent from "../Component/TableComponent";
-import { RapidApi, PYTHON_API, PYTHON_Socket } from "../constants";
+//import { RapidApi, PYTHON_API, PYTHON_Socket } from "../constants";
 
 function TradeData() {
     // const [key, setKey] = useState('home');
@@ -17,22 +17,22 @@ function TradeData() {
    const storedUserObject = JSON.parse(storedUser);
    const firstName = storedUserObject.firstName;
 
-    useEffect(() => {
-        // Fetch data or perform any other side effects based on the active tab
-        switch (key) {
-            case 'rapid':
-                setActiveTabData(RapidApi);
-                break;
-            case 'pythonAPI':
-                setActiveTabData(PYTHON_API);
-                break;
-            case 'pythonSocket':
-                setActiveTabData(PYTHON_Socket);
-                break;
-            default:
-                break;
-        }
-    }, [key]);
+    // useEffect(() => {
+    //     // Fetch data or perform any other side effects based on the active tab
+    //     switch (key) {
+    //         case 'rapid':
+    //             setActiveTabData(RapidApi);
+    //             break;
+    //         case 'pythonAPI':
+    //             setActiveTabData(PYTHON_API);
+    //             break;
+    //         case 'pythonSocket':
+    //             setActiveTabData(PYTHON_Socket);
+    //             break;
+    //         default:
+    //             break;
+    //     }
+    // }, [key]);
 
     return (
         <main id="main" className="main">
