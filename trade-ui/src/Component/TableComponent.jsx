@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { RapidApi, PYTHON_API, PYTHON_Socket, PythonApiUrl, PythonSocketUrl, RapidApiUrl, BuySellApiUrl } from "../constants";
 import axios from "axios";
 import Modal from 'react-bootstrap/Modal';
