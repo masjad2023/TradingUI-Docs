@@ -3,11 +3,11 @@ import FacebookLogin from '@greatsumini/react-facebook-login';
 import './facebookButton.css';
 
 const FacebookButton = ({ onFacebookLogin }) => {
-  // const responseFacebook = (response) => {
-  //   // Handle the Facebook login response here
-  //   localStorage.setItem("isAuthenticated", true);
-  //   console.log(response);
-  // };
+  const responseFacebook = (response) => {
+    // Handle the Facebook login response here
+    localStorage.setItem("isAuthenticated", true);
+    console.log(response);
+  };
 
   return (
     // <FacebookLogin

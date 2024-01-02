@@ -8,7 +8,7 @@ function MainBody(){
             <Routes>
                 <Route exact path="/" element={<LoginPage />} />
                 <Route path="/login" element={<LoginPage />} />
-                <Route path="/trade" element={ localStorage.getItem("isAuthenticated") === "true" ? <TradeData/> : <LoginPage />} />
+                <Route path="/trade" element={ localStorage.getItem("isAuthenticated") == "true" ? <TradeData/> : <LoginPage />} />
             </Routes>
         </Router>
     )

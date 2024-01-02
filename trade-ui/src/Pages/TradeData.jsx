@@ -1,39 +1,38 @@
-import React from 'react';
-// import Tab from 'react-bootstrap/Tab';
-// import Tabs from 'react-bootstrap/Tabs';
+import React, { useEffect, useState } from 'react';
+import Tab from 'react-bootstrap/Tab';
+import Tabs from 'react-bootstrap/Tabs';
 
-// import TableComponent from "../Component/TableComponent";
-//import { RapidApi, PYTHON_API, PYTHON_Socket } from "../constants";
+import TableComponent from "../Component/TableComponent";
+import { RapidApi, PYTHON_API, PYTHON_Socket } from "../constants";
 
 function TradeData() {
-    let niftyData = {};
-    // const [key, setKey] = useState('home');
-    // const [niftyData, setNiftyData] = useState({});
-    // const [activeTabData, setActiveTabData] = useState(RapidApi);
-    // const setNiftyRecord = (niftyData) => {
-    //     setNiftyData(niftyData);
-    // }
+    const [key, setKey] = useState('home');
+    const [niftyData, setNiftyData] = useState({});
+    const [activeTabData, setActiveTabData] = useState(RapidApi);
+    const setNiftyRecord = (niftyData) => {
+        setNiftyData(niftyData);
+    }
 
    const storedUser = localStorage.getItem("loggedUser");
    const storedUserObject = JSON.parse(storedUser);
    const firstName = storedUserObject.firstName;
 
-    // useEffect(() => {
-    //     // Fetch data or perform any other side effects based on the active tab
-    //     switch (key) {
-    //         case 'rapid':
-    //             setActiveTabData(RapidApi);
-    //             break;
-    //         case 'pythonAPI':
-    //             setActiveTabData(PYTHON_API);
-    //             break;
-    //         case 'pythonSocket':
-    //             setActiveTabData(PYTHON_Socket);
-    //             break;
-    //         default:
-    //             break;
-    //     }
-    // }, [key]);
+    useEffect(() => {
+        // Fetch data or perform any other side effects based on the active tab
+        switch (key) {
+            case 'rapid':
+                setActiveTabData(RapidApi);
+                break;
+            case 'pythonAPI':
+                setActiveTabData(PYTHON_API);
+                break;
+            case 'pythonSocket':
+                setActiveTabData(PYTHON_Socket);
+                break;
+            default:
+                break;
+        }
+    }, [key]);
 
     return (
         <main id="main" className="main">
@@ -69,7 +68,7 @@ function TradeData() {
                         </div>
                         <div className="card-body">
 
-                            {/* <Tabs id="tradeGrid" activeKey={key} onSelect={(k) => setKey(k)} className="mb-3">
+                            <Tabs id="tradeGrid" activeKey={key} onSelect={(k) => setKey(k)} className="mb-3">
                                 <Tab eventKey="rapid" title="Rapid">
                                     <TableComponent data={activeTabData} setNiftyData={setNiftyRecord} />
                                 </Tab>
@@ -81,7 +80,7 @@ function TradeData() {
                                 <Tab eventKey="pythonSocket" title="Python Socket">
                                     <TableComponent data={activeTabData} setNiftyData={setNiftyRecord} />
                                 </Tab>
-                            </Tabs> */}
+                            </Tabs>
 
                         </div>
                     </div>
