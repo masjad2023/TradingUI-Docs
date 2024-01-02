@@ -194,7 +194,7 @@ function TableComponent(props) {
                 ws.close();
             };
         }
-    }, [props.data, setPreviousWSSData, setTableData, setRowColors, setNiftyDatayData, setniftyValue, setniftyPercentChngeValue]);
+    }, [props.data, setPreviousWSSData, setTableData, setRowColors, setNiftyData, setniftyValue, setniftyPercentChngeValue]);
 
     useEffect(() => {
         const fetchData = () => {
