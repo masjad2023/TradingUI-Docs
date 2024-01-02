@@ -182,8 +182,8 @@ function TableComponent(props) {
                     });
                     setRowColors(newRowColors);
                 }
-                // setPreviousWSSData(data);
-                // setTableData(data);
+                setPreviousWSSData(data);
+                setTableData(data);
             };
 
             ws.onerror = (error) => {
@@ -194,7 +194,7 @@ function TableComponent(props) {
                 ws.close();
             };
         }
-    }, [props.data]);
+    }, [props.data, setPreviousWSSData, setTableData]);
 
     useEffect(() => {
         const fetchData = () => {
